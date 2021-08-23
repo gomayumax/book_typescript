@@ -71,8 +71,21 @@
   },
   "include": [
     "src/**/*"
-  ],
-  "compilerOptions": {
-    "typeRoots": ["./typings"]
-  }
+  ]
+//  "exclude": [ /* includeされたファイルはexcludeプロパティでフィルタリングできる(filesで読み込まれたものは常にインクルードされる) */
+//    "node_modules",
+//    "**/*.test.ts"
+//  ],
+//  "files": [
+//    "a.ts",
+//    "path/to/b.ts",
+//    "dirs/**/*"
+//  ],
+//  "extends": "./tsconfig.base", /* 別ファイルから継承ができる */
+//  "compilerOptions": {
+//    "typeRoots": ["./typings"]
+//  },
+//  "references": [ /* typescriptプロジェクトを細かく分割する */
+//    {"path":  "../src"}
+//  ]
 }
