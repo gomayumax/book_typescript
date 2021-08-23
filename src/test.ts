@@ -1,7 +1,4 @@
-export function test1() {
-    return 'test1'
-}
+import {sampleText, sampleFunction} from './sample'
 
-export function test2() {
-    return { value: 'test2'}
-}
+const a = sampleFunction()
+const b = sampleText
