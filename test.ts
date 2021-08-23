@@ -1,5 +1,3 @@
-export function test(arg) {
-    let nullAble = null
-    nullAble = 'string'
+export function test(arg :any) {
     return arg
 }
