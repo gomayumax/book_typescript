@@ -71,5 +71,8 @@
   },
   "include": [
     "src/**/*"
-  ]
+  ],
+  "compilerOptions": {
+    "typeRoots": ["./typings"]
+  }
 }
