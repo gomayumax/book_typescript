@@ -103,5 +103,136 @@ objectType = false // error
 objectType = 1 //error
 
 
+// 高度な型
+type Dog = {
+    tail: Tail
+    bark: () => void
+}
+type Bird = {
+    wing: Wing
+    fly: () => void
+}
+type Kimera = Dog & Bird
 
+function returnNever(): never {
+    throw new Error()
+}
+let unexistenceType: string & number & boolean = returnNever()
 
+let value: boolean | number | string
+value = true
+value = 1
+value = 'one'
+let numberOrStrings: (number|string)[]
+numberOrStrings = [1,'hoge']
+numberOrStrings = [1,'fuga', true] // error
+let nullableString: null | string
+nullableString = null
+nullableString = 'null'
+let nullableStrings: (null|string)[] = []
+nullableStrings.push('1')
+nullableStrings.push(null)
+nullableStrings.push(true) // error
+
+let myName: 'Taro'
+myName = 'Taro'
+myName = 'Jiro' // error
+myName.toLowerCase() // OK
+
+let zero: 0
+zero = 0
+zero = 1 // error
+zero.toFixed(1)
+let truth: true
+truth = true
+truth = false // error
+
+let asString: string = ''
+let value: typeof asString
+value = 'value'
+value = 0 // error
+let myObject = {foo: 'foo'}
+let anotherObject: typeof myObject = {foo: ''}
+anotherObject['foo'] = 'value'
+anotherObject['foo'] = 2 // error
+
+const myObject = {
+    foo: 'FOO',
+    bar: 'BAR',
+    baz: 'BAZ',
+}
+let myObjectKey: keyof typeof myObject
+myObjectKey = 'bar'
+myObjectKey = 'qux' // error
+
+let someValue: any = "this is a string"
+let strLength: number = (<string>someValue).length
+let someValue: any = "this is as string"
+let strLength: number = (someValue as string).length
+
+class Creature {
+    numberOfHands: number
+    numberOfFeet: number
+    constructor(numberOfHands: number, numberOfFeet: number) {
+        this.numberOfHands = numberOfHands
+        this.numberOfFeet = numberOfFeet
+    }
+}
+const creature = new Creature(0,4)
+class Dog extends Creature {
+    bark: string
+    constructor(bark: string) {
+        super(0,4);
+        this.bark = bark
+    }
+    barking() {
+        return `${this.bark}!${this.bark}!`
+    }
+    shakeTail() {
+        console.log(this.barking())
+    }
+}
+
+class Human extends Creature {
+    protected name: string
+    constructor(name: string) {
+        super(2,2);
+        this.name = name
+    }
+    protected greet() {
+        return `Hello I'm ${this.name}`
+    }
+    public shakeHands() {
+        console.log(this.greet())
+    }
+}
+const dog = new Dog('Bow-Bow')
+const human = new Human('Hanako')
+
+class Taro extends Human {
+    constructor() {
+        super('Taro');
+    }
+    public greeting() {
+        console.log(this.greet())
+    }
+}
+
+const Taro = new Taro()
+taro.greeting()
+taro.greet()
+taro.shakeHands()
+
+enum Direction {
+    UP,
+    DOWN,
+    LEFT,
+    Right,
+}
+const left = Direction.LEFT
+
+enum Ports {
+    USER_SERVICE = "8080",
+    REGISTER_SERVICE = "8081",
+    MEDIA_SERVICE = "8888"
+}
