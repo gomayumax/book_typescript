@@ -24,3 +24,40 @@ function getFormattedValue2(value: number, unit: string | null = null): string {
 console.log(getFormattedValue2(100, 'pt'))
 console.log(getFormattedValue2(10 , 0))
 
+type User ={ // すべてのプロパティはオプショナルであるが引数は必要
+    age?: number
+    name?: string
+}
+const maybeUser = {
+    age: 2,
+    name: 'Mai',
+    gender: 'female'
+}
+const noUer = {
+    gender: 'male',
+    graduate: 'Tokyo'
+}
+function register(user: User) {}
+
+register(maybeUser)
+// register(noUer)// error
+register({})
+
+type State = {
+    id: number
+    name: string
+}
+const state: Readonly<State> = { // 読み込み専用の変数になる。ただしランタイム上だと書き換えられる
+    id: 1,
+    name: 'Mai'
+}
+// state.name = 2 // error
+
+const state2: State = {
+    id: 1,
+    name: 'Taro'
+}
+
+const frozenObj = Object.freeze(state2)
+// frozenObj.id = 2 // error
+
