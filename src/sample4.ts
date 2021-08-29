@@ -61,3 +61,41 @@ const state2: State = {
 const frozenObj = Object.freeze(state2)
 // frozenObj.id = 2 // error
 
+// アップキャスト / ダウンキャスト
+const defaultTheme ={ // ダウンキャスト: バリバリ固める
+    backgroundColor: "orange" as "orange",
+    color: "red" as "red"
+}
+// defaultTheme.backgroundColor = "blue" // error
+
+type User2 = {
+    name: string
+    [k: string]: any // インデックスシグネチャ: 任意のプロパティを動的に追加
+}
+
+const userA: User2 = {
+    name: 'Taro',
+    age: 26
+}
+
+type Answer = 'mighty' | 'lot' | 'few' | 'entirely'
+type User3 = {
+    name: string
+    enquote: {[k: string]: Answer | undefined} // インデックスシグネチャ: 存在しないプロパティについても許容する
+}
+
+const userB: User3 = {
+    name: 'Taro',
+    enquote: {
+        exercise: 'entirely',
+        time_of_sleep: "few"
+    }
+}
+
+type Question = 'exercise' | 'time_of_sleep'
+type User4 = {
+    name: string
+    enquote: {[k in Question]?: Answer} // インデックスシグネチャ: プロパティ名について制限する
+}
+
+const tuple = [false, 1, '2'] as const // readonly
