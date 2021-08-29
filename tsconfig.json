@@ -71,7 +71,7 @@
     "resolveJsonModule": true
   },
   "include": [
-    "src/**/*"
+    "src/**/sample4.ts"
   ]
 //  "exclude": [ /* includeされたファイルはexcludeプロパティでフィルタリングできる(filesで読み込まれたものは常にインクルードされる) */
 //    "node_modules",
