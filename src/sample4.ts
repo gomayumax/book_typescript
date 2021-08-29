@@ -18,7 +18,7 @@ console.log(greet('Mai'))
 function getFormattedValue2(value: number, unit: string | null = null): string {
     const _value = value.toFixed(1)
     if (unit === null) return `${_value}`
-    retrun `${_value} ${unit.toUpperCase()}`
+    return `${_value} ${unit.toUpperCase()}`
 }
 
 console.log(getFormattedValue2(100, 'pt'))
