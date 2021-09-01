@@ -88,3 +88,9 @@ type Filter<T, U> = {
 type StringKeys = Filter<Properties, string>
 type NumberKeys = Filter<Properties, number>
 type FunctionKeys = Filter<Properties, Function>
+
+
+async function greet() {
+    return 'Hello'
+}
+type ResolveArg<T> = T extends () => Promise<infer U>? U : never
