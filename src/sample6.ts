@@ -57,3 +57,20 @@ class Person<T extends string> {
 }
 const person = new Person('Taro')
 const personName = person.name
+
+type IsString<T> = T extends string ? true : false
+type X = IsString<'test'> // true
+type Y = IsString<0> // false
+
+// Mapped types
+interface Properties {
+    name: string
+    age: number
+    flag: boolean
+}
+type IsType<T, U>={
+    [K in keyof T]: T[K] extends U? true : false
+}
+type IsString2 = IsType<Properties, string>
+type IsNumber = IsType<Properties, number>
+type IsBoolean = IsType<Properties, boolean>
