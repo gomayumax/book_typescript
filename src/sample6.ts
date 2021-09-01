@@ -35,3 +35,15 @@ function boxed2<T extends Props>(props: T) {
 const c022 = boxed2({amount: 2})
 const c023 = boxed2({value: 0}) // error
 const c024 = boxed2({amount: 'test'}) // error
+
+function pick<T, K extends keyof T>(props: T, key: K) {
+    return props[key]
+}
+
+const obj = {
+    name: 'Taro',
+    amount: 0,
+    flag: false
+}
+const value1 = pick(obj, 'name');
+const value2 = pick(obj, 'amount')
