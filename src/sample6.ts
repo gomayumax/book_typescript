@@ -47,3 +47,13 @@ const obj = {
 }
 const value1 = pick(obj, 'name');
 const value2 = pick(obj, 'amount')
+
+class Person<T extends string> {
+    name: T
+    constructor(name: T) {
+        this.name = name
+    }
+
+}
+const person = new Person('Taro')
+const personName = person.name
