@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
+    <h1>{{ greet }}</h1>
   </div>
 </template>
 
@@ -22,6 +22,21 @@
     // Dataの定義
     inputText: string | null = null
     bounds: ClientRect | DOMRect | null = null
+    name: string = 'Taro'
+    value: any = false
+
+    // computedの定義
+    get greet(): String {
+      return `Hello ${this.name}`
+    }
+    get valueLabel(): string {
+      return this.value
+    }
+
+    // methodsの定義
+    onClickElement({target}: {target : HTMLButtonElement}) {
+      console.log(target.getBoundingClientRect())
+    }
   }
 </script>
 
