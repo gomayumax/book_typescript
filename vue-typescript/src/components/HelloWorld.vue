@@ -32,6 +32,7 @@
 
 <script lang="ts">
   import Vue, {PropType} from "vue"
+
 export default Vue.extend({
   name: 'HelloWorld',
   props: { // props の型宣言
